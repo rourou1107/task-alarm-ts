@@ -1,0 +1,16 @@
+@import '~antd/dist/antd.css';
+
+#signUp {
+  max-width: 500px;
+  margin: 100px auto;
+  > .title {
+    text-align: center;
+  }
+  > * {
+    margin-bottom: 20px;
+  }
+  .login {
+    color: #40A9FF;
+    cursor: pointer;
+  }
+}
