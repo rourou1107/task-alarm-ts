@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import history from './history';
 const appID = '1ggPi1f5133zd4Pmh8aErr6f';
 const appSecret = '46j5ANEYHm9fnbzvd6uhhYxG';
 const instance = axios.create({
@@ -10,7 +10,6 @@ const instance = axios.create({
     }
 });
 instance.interceptors.request.use((config) => {
-    console.log(config)
     const xToken = localStorage.getItem('x-token')
     if(xToken){
         config.headers['Authorization'] = `Bearer ${xToken}` // 发送请求前，取到Token，放在请求头里
@@ -29,9 +28,10 @@ instance.interceptors.response.use((response) => {
     return response;
 },  (error) => {
     if(error.response.status === 401){
-        console.log("重定向");
+        history.push('/login');
     }
     // Do something with response error
+
     return Promise.reject(error);
 });
 export default instance;
