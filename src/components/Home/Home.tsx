@@ -20,12 +20,8 @@ class Home extends React.Component<any, MyHomeState> {
     }
 
     getUserInfo = async () => { // async 函数会返回一个 Promise 对象
-        try {
-            const response = await axios.get('me'); // response 是 promise 返回的值
-            this.setState({account: response.data.account});
-        } catch (e) {
-            console.error(e);
-        }
+        const response = await axios.get('me'); // response 是 promise 返回的值
+        this.setState({account: response.data.account});
 
     };
     logout = () => {
